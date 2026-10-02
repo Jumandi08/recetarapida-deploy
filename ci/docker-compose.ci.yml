@@ -1,0 +1,6 @@
+# Ajuste solo para CI: el gateway publica el puerto 8080 en el runner para que
+# la prueba de humo lo alcance. En producción entra por Traefik, sin puertos.
+services:
+  gateway:
+    ports:
+      - "8080:8080"
