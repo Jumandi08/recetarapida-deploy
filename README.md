@@ -72,6 +72,19 @@ docker compose exec -T postgres psql -U postgres -d usuarios_db \
   -c "delete from users where user_mail like '%@recetarapida.test'"
 ```
 
+## Pipeline de CI
+
+`.github/workflows/ci.yml` corre en cada push a `main`, en cada pull request y a
+mano. Revisa los scripts con ShellCheck, valida el compose, construye las tres
+imágenes desde los repositorios del equipo, levanta el stack completo con su
+propia instancia de PostgreSQL, espera a que los servicios respondan y ejecuta
+`scripts/smoke-test.sh` contra el gateway. Si algo falla, muestra los registros
+de los contenedores; al final siempre apaga el stack. `ci/docker-compose.ci.yml`
+solo añade la publicación del puerto 8080 en el runner.
+
+El despliegue al servidor sigue siendo manual (`scripts/deploy.sh`) y se lanza
+cuando el pipeline pasa.
+
 ## Operación
 
 ```bash
