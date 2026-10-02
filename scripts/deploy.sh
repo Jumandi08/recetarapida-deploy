@@ -7,30 +7,29 @@
 set -euo pipefail
 
 HOST="${1:-homelab}"
-REMOTE_DIR="stacks/recetarapida"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
-echo "==> Copiando archivos a ${HOST}:~/${REMOTE_DIR}"
-ssh "$HOST" bash -s <<EOF
-mkdir -p ~/${REMOTE_DIR}/docker/postgres
+echo "==> Copiando archivos a ${HOST}:~/stacks/recetarapida"
+# El shell del homelab es fish: los scripts remotos se pasan a bash por stdin.
+ssh "$HOST" bash -s <<'EOF'
+mkdir -p ~/stacks/recetarapida/docker/postgres
 EOF
-tar -C "$ROOT" -cf - docker-compose.yml .env.example docker | ssh "$HOST" "tar -C ~/${REMOTE_DIR} -xf -"
+tar -C "$ROOT" -cf - docker-compose.yml .env.example docker | ssh "$HOST" 'tar -C ~/stacks/recetarapida -xf -'
 
 echo "==> Preparando .env y levantando contenedores"
-# El shell del homelab es fish: el script remoto se pasa a bash por stdin.
-ssh "$HOST" bash -s <<EOF
+ssh "$HOST" bash -s <<'EOF'
 set -euo pipefail
-cd ~/${REMOTE_DIR}
+cd ~/stacks/recetarapida
 chmod +x docker/postgres/10-init-databases.sh
 if [ ! -f .env ]; then
   umask 077
   {
     echo "PUBLIC_HOST=recetarapida.ansayan.com"
     echo "POSTGRES_ADMIN_USER=postgres"
-    echo "POSTGRES_ADMIN_PASSWORD=\$(openssl rand -hex 24)"
-    echo "AUTH_DB_PASSWORD=\$(openssl rand -hex 24)"
-    echo "PRESCRIPTIONS_DB_PASSWORD=\$(openssl rand -hex 24)"
-    echo "JWT_SECRET=\$(openssl rand -hex 48)"
+    echo "POSTGRES_ADMIN_PASSWORD=$(openssl rand -hex 24)"
+    echo "AUTH_DB_PASSWORD=$(openssl rand -hex 24)"
+    echo "PRESCRIPTIONS_DB_PASSWORD=$(openssl rand -hex 24)"
+    echo "JWT_SECRET=$(openssl rand -hex 48)"
     echo "JWT_EXPIRATION=86400000"
     echo "REF_AUTH=main"
     echo "REF_PRESCRIPTION=main"

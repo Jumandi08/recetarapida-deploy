@@ -44,4 +44,5 @@ check "POST /recetas -> 200" 200 "$(curl -s -o "$OUT/receta.pdf" -w '%{http_code
 check "Receta es un PDF" "%PDF" "$(head -c 4 "$OUT/receta.pdf")"
 
 rm -rf "$OUT"
-[ "$fail" -eq 0 ] && echo "Todo en orden." || { echo "Hay pruebas fallidas."; exit 1; }
+if [ "$fail" -ne 0 ]; then echo "Hay pruebas fallidas."; exit 1; fi
+echo "Todo en orden."
