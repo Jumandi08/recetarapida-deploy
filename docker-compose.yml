@@ -1,0 +1,108 @@
+name: recetarapida
+
+# Despliegue de producción de RecetaRápida API.
+# Solo el gateway sale a internet (por Traefik); la base de datos y los
+# microservicios viven en una red interna sin puertos publicados.
+# Las imágenes se construyen desde los repositorios del equipo; REF_* fija
+# la rama o el commit de cada uno para poder repetir un despliegue.
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: recetarapida-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?define POSTGRES_ADMIN_PASSWORD en .env}
+      POSTGRES_DB: postgres
+      AUTH_DB_PASSWORD: ${AUTH_DB_PASSWORD:?define AUTH_DB_PASSWORD en .env}
+      PRESCRIPTIONS_DB_PASSWORD: ${PRESCRIPTIONS_DB_PASSWORD:?define PRESCRIPTIONS_DB_PASSWORD en .env}
+    volumes:
+      - recetarapida_pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/10-init-databases.sh:/docker-entrypoint-initdb.d/10-init-databases.sh:ro
+    ports:
+      # Solo loopback del servidor: se accede por túnel SSH, nunca desde internet.
+      - "127.0.0.1:5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_ADMIN_USER:-postgres} -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    mem_limit: 1g
+    networks:
+      - internal
+
+  msa-authentication:
+    build:
+      context: ${REPO_AUTH:-https://github.com/edulima1989/msa-quick-prescription-authentication.git}#${REF_AUTH:-main}
+    image: recetarapida/msa-authentication:${REF_AUTH:-main}
+    container_name: recetarapida-auth
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/usuarios_db
+      SPRING_DATASOURCE_USERNAME: usuarios_app
+      SPRING_DATASOURCE_PASSWORD: ${AUTH_DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:?define JWT_SECRET en .env (mínimo 64 caracteres)}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-86400000}
+      JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=75
+    depends_on:
+      postgres:
+        condition: service_healthy
+    mem_limit: 768m
+    networks:
+      - internal
+
+  msa-quick-prescription:
+    build:
+      context: ${REPO_PRESCRIPTION:-https://github.com/edulima1989/msa-quick-prescription.git}#${REF_PRESCRIPTION:-main}
+    image: recetarapida/msa-quick-prescription:${REF_PRESCRIPTION:-main}
+    container_name: recetarapida-prescription
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/prescriptions_db
+      SPRING_DATASOURCE_USERNAME: prescriptions_app
+      SPRING_DATASOURCE_PASSWORD: ${PRESCRIPTIONS_DB_PASSWORD}
+      JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=75
+    depends_on:
+      postgres:
+        condition: service_healthy
+    mem_limit: 1g
+    networks:
+      - internal
+
+  gateway:
+    build:
+      context: ${REPO_GATEWAY:-https://github.com/edulima1989/gtw-quick-prescription.git}#${REF_GATEWAY:-main}
+    image: recetarapida/gateway:${REF_GATEWAY:-main}
+    container_name: recetarapida-gateway
+    restart: unless-stopped
+    environment:
+      PRESCRIPTIONS_SERVICE_URI: http://msa-quick-prescription:8081
+      AUTH_SERVICE_URI: http://msa-authentication:8082
+      SHELL_ORIGIN: https://${PUBLIC_HOST:-recetarapida.ansayan.com}
+      JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=75
+    depends_on:
+      - msa-authentication
+      - msa-quick-prescription
+    mem_limit: 768m
+    networks:
+      - internal
+      - coolify
+    labels:
+      # Traefik de Coolify: Cloudflare termina el TLS y entrega HTTP por el túnel.
+      traefik.enable: "true"
+      traefik.docker.network: coolify
+      traefik.http.routers.recetarapida.entrypoints: http
+      traefik.http.routers.recetarapida.rule: Host(`${PUBLIC_HOST:-recetarapida.ansayan.com}`)
+      traefik.http.services.recetarapida.loadbalancer.server.port: "8080"
+
+volumes:
+  recetarapida_pgdata:
+    name: recetarapida_pgdata
+
+networks:
+  internal:
+    name: recetarapida_internal
+    driver: bridge
+  coolify:
+    external: true
