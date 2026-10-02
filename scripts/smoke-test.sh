@@ -23,12 +23,26 @@ LOGIN_OK="{\"userMail\":\"$MAIL\",\"userPassword\":\"$PASS\"}"
 LOGIN_MAL="{\"userMail\":\"$MAIL\",\"userPassword\":\"incorrecta-123\"}"
 JSON='Content-Type: application/json'
 
+# Los servicios Java tardan unos segundos en arrancar: esperar a que respondan.
+esperar() { # nombre código-esperado argumentos-de-curl...
+  local nombre="$1" esperado="$2"
+  shift 2
+  for _ in $(seq 1 40); do
+    if [ "$(curl -s -o /dev/null -w '%{http_code}' "$@")" = "$esperado" ]; then return 0; fi
+    sleep 3
+  done
+  echo "  FALLA ${nombre}: no respondió ${esperado} a tiempo"
+  exit 1
+}
+
 echo "Probando ${BASE}"
+esperar "Auth Service" 401 -X POST "$BASE/api/v1/auth/login" -H "$JSON" -d "$LOGIN_MAL"
 check "GET /cie10 sin token -> 401" 401 "$(code "$BASE/api/v1/cie10")"
 check "POST /auth/register -> 201" 201 "$(code -X POST "$BASE/api/v1/auth/register" -H "$JSON" -d "$REGISTRO")"
 check "POST /auth/login -> 200" 200 "$(code -X POST "$BASE/api/v1/auth/login" -H "$JSON" -d "$LOGIN_OK")"
 TOKEN="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["accessToken"])' "$OUT/body")"
 AUTH=(-H "Authorization: Bearer $TOKEN")
+esperar "Servicio de prescripciones" 200 "${AUTH[@]}" "$BASE/api/v1/cie10/J00"
 
 check "POST /auth/login clave mala -> 401" 401 "$(code -X POST "$BASE/api/v1/auth/login" -H "$JSON" -d "$LOGIN_MAL")"
 check "GET /cie10?q=resfriado -> 200" 200 "$(code "${AUTH[@]}" "$BASE/api/v1/cie10?q=resfriado&page=1&size=5")"
