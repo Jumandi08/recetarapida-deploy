@@ -1,0 +1,390 @@
+16:46:38
+recetarapida-gateway 0.62% 213.6MiB / 768MiB
+recetarapida-auth 2.09% 331.9MiB / 768MiB
+recetarapida-prescription 0.77% 316.7MiB / 1GiB
+recetarapida-postgres 0.13% 64.12MiB / 1GiB
+16:46:45
+recetarapida-gateway 5.68% 216.8MiB / 768MiB
+recetarapida-auth 3.12% 333.3MiB / 768MiB
+recetarapida-prescription 5.63% 329.1MiB / 1GiB
+recetarapida-postgres 0.30% 64.39MiB / 1GiB
+16:46:52
+recetarapida-gateway 12.00% 225.2MiB / 768MiB
+recetarapida-auth 6.63% 334.3MiB / 768MiB
+recetarapida-prescription 12.29% 330.1MiB / 1GiB
+recetarapida-postgres 0.49% 65.39MiB / 1GiB
+16:46:59
+recetarapida-gateway 9.21% 228.5MiB / 768MiB
+recetarapida-auth 8.07% 337.8MiB / 768MiB
+recetarapida-prescription 11.56% 342.9MiB / 1GiB
+recetarapida-postgres 0.51% 64.5MiB / 1GiB
+16:47:06
+recetarapida-gateway 10.40% 229.1MiB / 768MiB
+recetarapida-auth 3.95% 339.5MiB / 768MiB
+recetarapida-prescription 18.40% 347MiB / 1GiB
+recetarapida-postgres 0.53% 65.56MiB / 1GiB
+16:47:13
+recetarapida-gateway 12.11% 228.7MiB / 768MiB
+recetarapida-auth 8.24% 340.9MiB / 768MiB
+recetarapida-prescription 12.58% 350.2MiB / 1GiB
+recetarapida-postgres 0.71% 65.81MiB / 1GiB
+16:47:20
+recetarapida-gateway 13.83% 233.9MiB / 768MiB
+recetarapida-auth 4.77% 341.3MiB / 768MiB
+recetarapida-prescription 7.96% 350.3MiB / 1GiB
+recetarapida-postgres 0.64% 64.85MiB / 1GiB
+16:47:27
+recetarapida-gateway 36.81% 248.6MiB / 768MiB
+recetarapida-auth 9.95% 342.3MiB / 768MiB
+recetarapida-prescription 11.75% 355.1MiB / 1GiB
+recetarapida-postgres 0.92% 64.81MiB / 1GiB
+16:47:34
+recetarapida-gateway 9.91% 250.2MiB / 768MiB
+recetarapida-auth 6.28% 343.5MiB / 768MiB
+recetarapida-prescription 20.94% 354.2MiB / 1GiB
+recetarapida-postgres 1.09% 64.34MiB / 1GiB
+16:47:41
+recetarapida-gateway 19.14% 246.1MiB / 768MiB
+recetarapida-auth 4.15% 344.9MiB / 768MiB
+recetarapida-prescription 24.20% 365.5MiB / 1GiB
+recetarapida-postgres 1.14% 64.4MiB / 1GiB
+16:47:48
+recetarapida-gateway 12.34% 246.2MiB / 768MiB
+recetarapida-auth 6.52% 345.5MiB / 768MiB
+recetarapida-prescription 19.67% 391MiB / 1GiB
+recetarapida-postgres 1.16% 65.12MiB / 1GiB
+16:47:55
+recetarapida-gateway 21.91% 258.4MiB / 768MiB
+recetarapida-auth 5.71% 350.4MiB / 768MiB
+recetarapida-prescription 11.78% 386.4MiB / 1GiB
+recetarapida-postgres 1.30% 64.66MiB / 1GiB
+16:48:02
+recetarapida-gateway 16.80% 263.5MiB / 768MiB
+recetarapida-auth 4.32% 354.8MiB / 768MiB
+recetarapida-prescription 22.68% 386.6MiB / 1GiB
+recetarapida-postgres 1.69% 65.09MiB / 1GiB
+16:48:09
+recetarapida-gateway 13.28% 264.9MiB / 768MiB
+recetarapida-auth 4.47% 354.6MiB / 768MiB
+recetarapida-prescription 49.94% 395.6MiB / 1GiB
+recetarapida-postgres 1.46% 65.34MiB / 1GiB
+16:48:16
+recetarapida-gateway 8.23% 268.9MiB / 768MiB
+recetarapida-auth 4.74% 354.9MiB / 768MiB
+recetarapida-prescription 12.57% 402MiB / 1GiB
+recetarapida-postgres 2.03% 65.39MiB / 1GiB
+16:48:23
+recetarapida-gateway 25.55% 281.9MiB / 768MiB
+recetarapida-auth 22.10% 355.5MiB / 768MiB
+recetarapida-prescription 22.91% 412.4MiB / 1GiB
+recetarapida-postgres 2.44% 69.12MiB / 1GiB
+16:48:30
+recetarapida-gateway 26.41% 286MiB / 768MiB
+recetarapida-auth 26.15% 371MiB / 768MiB
+recetarapida-prescription 16.90% 412.5MiB / 1GiB
+recetarapida-postgres 2.06% 68.93MiB / 1GiB
+16:48:37
+recetarapida-gateway 9.48% 287.7MiB / 768MiB
+recetarapida-auth 5.47% 363.6MiB / 768MiB
+recetarapida-prescription 97.67% 437MiB / 1GiB
+recetarapida-postgres 1.95% 68.83MiB / 1GiB
+16:48:44
+recetarapida-gateway 10.90% 289.1MiB / 768MiB
+recetarapida-auth 3.42% 364.5MiB / 768MiB
+recetarapida-prescription 8.34% 429.5MiB / 1GiB
+recetarapida-postgres 1.92% 69.46MiB / 1GiB
+16:48:51
+recetarapida-gateway 9.10% 290.2MiB / 768MiB
+recetarapida-auth 3.27% 364.8MiB / 768MiB
+recetarapida-prescription 13.74% 430.2MiB / 1GiB
+recetarapida-postgres 4.25% 70.65MiB / 1GiB
+16:48:58
+recetarapida-gateway 10.45% 291.3MiB / 768MiB
+recetarapida-auth 3.50% 365.2MiB / 768MiB
+recetarapida-prescription 27.09% 430.3MiB / 1GiB
+recetarapida-postgres 2.25% 69.47MiB / 1GiB
+16:49:05
+recetarapida-gateway 10.75% 291.5MiB / 768MiB
+recetarapida-auth 3.72% 365.5MiB / 768MiB
+recetarapida-prescription 5.93% 430.7MiB / 1GiB
+recetarapida-postgres 2.32% 70.35MiB / 1GiB
+16:49:12
+recetarapida-gateway 10.50% 295.4MiB / 768MiB
+recetarapida-auth 4.00% 365.5MiB / 768MiB
+recetarapida-prescription 9.52% 431MiB / 1GiB
+recetarapida-postgres 2.36% 70.97MiB / 1GiB
+16:49:19
+recetarapida-gateway 11.06% 295MiB / 768MiB
+recetarapida-auth 3.73% 365.3MiB / 768MiB
+recetarapida-prescription 6.41% 431.4MiB / 1GiB
+recetarapida-postgres 2.23% 69.45MiB / 1GiB
+16:49:26
+recetarapida-gateway 10.33% 298.2MiB / 768MiB
+recetarapida-auth 3.94% 365.6MiB / 768MiB
+recetarapida-prescription 7.16% 430.2MiB / 1GiB
+recetarapida-postgres 2.36% 70.09MiB / 1GiB
+16:49:33
+recetarapida-gateway 10.38% 298.2MiB / 768MiB
+recetarapida-auth 3.97% 365.4MiB / 768MiB
+recetarapida-prescription 8.72% 431.2MiB / 1GiB
+recetarapida-postgres 2.32% 69.54MiB / 1GiB
+16:49:40
+recetarapida-gateway 10.53% 298.4MiB / 768MiB
+recetarapida-auth 3.86% 366.1MiB / 768MiB
+recetarapida-prescription 8.27% 431MiB / 1GiB
+recetarapida-postgres 4.45% 71.21MiB / 1GiB
+16:49:47
+recetarapida-gateway 10.09% 297.8MiB / 768MiB
+recetarapida-auth 4.05% 365.2MiB / 768MiB
+recetarapida-prescription 6.28% 430.7MiB / 1GiB
+recetarapida-postgres 2.41% 70.4MiB / 1GiB
+16:49:54
+recetarapida-gateway 11.25% 300.8MiB / 768MiB
+recetarapida-auth 4.39% 365.1MiB / 768MiB
+recetarapida-prescription 8.91% 429.9MiB / 1GiB
+recetarapida-postgres 2.33% 68.99MiB / 1GiB
+16:50:01
+recetarapida-gateway 10.81% 300.6MiB / 768MiB
+recetarapida-auth 3.89% 365.7MiB / 768MiB
+recetarapida-prescription 7.09% 431MiB / 1GiB
+recetarapida-postgres 5.21% 70.56MiB / 1GiB
+16:50:08
+recetarapida-gateway 10.92% 301.5MiB / 768MiB
+recetarapida-auth 4.24% 366.2MiB / 768MiB
+recetarapida-prescription 8.65% 431.7MiB / 1GiB
+recetarapida-postgres 2.54% 68.86MiB / 1GiB
+16:50:15
+recetarapida-gateway 10.64% 301.4MiB / 768MiB
+recetarapida-auth 4.15% 368.9MiB / 768MiB
+recetarapida-prescription 7.19% 430.6MiB / 1GiB
+recetarapida-postgres 2.51% 68.68MiB / 1GiB
+16:50:22
+recetarapida-gateway 11.13% 300.4MiB / 768MiB
+recetarapida-auth 4.09% 367.1MiB / 768MiB
+recetarapida-prescription 9.24% 430.7MiB / 1GiB
+recetarapida-postgres 2.46% 69.68MiB / 1GiB
+16:50:30
+recetarapida-gateway 10.76% 302MiB / 768MiB
+recetarapida-auth 4.03% 367.7MiB / 768MiB
+recetarapida-prescription 7.97% 430.5MiB / 1GiB
+recetarapida-postgres 2.55% 69.91MiB / 1GiB
+16:50:37
+recetarapida-gateway 11.52% 302.9MiB / 768MiB
+recetarapida-auth 4.39% 367.3MiB / 768MiB
+recetarapida-prescription 8.81% 430.3MiB / 1GiB
+recetarapida-postgres 2.74% 69.87MiB / 1GiB
+16:50:44
+recetarapida-gateway 10.60% 306.7MiB / 768MiB
+recetarapida-auth 4.16% 368.1MiB / 768MiB
+recetarapida-prescription 9.38% 431.4MiB / 1GiB
+recetarapida-postgres 2.63% 70.1MiB / 1GiB
+16:50:51
+recetarapida-gateway 11.61% 306.9MiB / 768MiB
+recetarapida-auth 4.36% 368.3MiB / 768MiB
+recetarapida-prescription 10.02% 432.5MiB / 1GiB
+recetarapida-postgres 2.59% 70.85MiB / 1GiB
+16:50:58
+recetarapida-gateway 11.51% 306.4MiB / 768MiB
+recetarapida-auth 4.48% 369MiB / 768MiB
+recetarapida-prescription 15.10% 431.7MiB / 1GiB
+recetarapida-postgres 2.60% 70.4MiB / 1GiB
+16:51:05
+recetarapida-gateway 10.93% 310.3MiB / 768MiB
+recetarapida-auth 3.95% 369.7MiB / 768MiB
+recetarapida-prescription 7.85% 431.4MiB / 1GiB
+recetarapida-postgres 2.55% 69.68MiB / 1GiB
+16:51:12
+recetarapida-gateway 11.68% 311.2MiB / 768MiB
+recetarapida-auth 5.93% 369.1MiB / 768MiB
+recetarapida-prescription 6.94% 431.5MiB / 1GiB
+recetarapida-postgres 4.83% 71.38MiB / 1GiB
+16:51:19
+recetarapida-gateway 12.26% 310.6MiB / 768MiB
+recetarapida-auth 4.78% 369.4MiB / 768MiB
+recetarapida-prescription 7.04% 431MiB / 1GiB
+recetarapida-postgres 2.68% 69.77MiB / 1GiB
+16:51:26
+recetarapida-gateway 11.90% 311.6MiB / 768MiB
+recetarapida-auth 4.30% 368.8MiB / 768MiB
+recetarapida-prescription 6.63% 432.4MiB / 1GiB
+recetarapida-postgres 2.62% 70.64MiB / 1GiB
+16:51:33
+recetarapida-gateway 11.24% 311.7MiB / 768MiB
+recetarapida-auth 4.40% 370.6MiB / 768MiB
+recetarapida-prescription 6.38% 432.1MiB / 1GiB
+recetarapida-postgres 2.57% 70.35MiB / 1GiB
+16:51:40
+recetarapida-gateway 11.43% 312.3MiB / 768MiB
+recetarapida-auth 4.49% 371.6MiB / 768MiB
+recetarapida-prescription 10.99% 432.7MiB / 1GiB
+recetarapida-postgres 2.48% 70.8MiB / 1GiB
+16:51:47
+recetarapida-gateway 10.71% 311.3MiB / 768MiB
+recetarapida-auth 4.04% 372.1MiB / 768MiB
+recetarapida-prescription 6.15% 433.1MiB / 1GiB
+recetarapida-postgres 2.84% 71.27MiB / 1GiB
+16:51:54
+recetarapida-gateway 11.14% 311.3MiB / 768MiB
+recetarapida-auth 4.28% 372.8MiB / 768MiB
+recetarapida-prescription 7.46% 432.9MiB / 1GiB
+recetarapida-postgres 2.58% 69.55MiB / 1GiB
+16:52:01
+recetarapida-gateway 11.51% 311.6MiB / 768MiB
+recetarapida-auth 4.46% 372.5MiB / 768MiB
+recetarapida-prescription 7.68% 433.5MiB / 1GiB
+recetarapida-postgres 3.14% 71.19MiB / 1GiB
+16:52:08
+recetarapida-gateway 12.49% 312.4MiB / 768MiB
+recetarapida-auth 4.29% 372.7MiB / 768MiB
+recetarapida-prescription 7.67% 434.3MiB / 1GiB
+recetarapida-postgres 2.59% 70.77MiB / 1GiB
+16:52:15
+recetarapida-gateway 12.64% 312.4MiB / 768MiB
+recetarapida-auth 4.22% 373MiB / 768MiB
+recetarapida-prescription 7.76% 434.4MiB / 1GiB
+recetarapida-postgres 2.63% 70.95MiB / 1GiB
+16:52:22
+recetarapida-gateway 10.80% 316.8MiB / 768MiB
+recetarapida-auth 4.16% 372.9MiB / 768MiB
+recetarapida-prescription 8.08% 434.2MiB / 1GiB
+recetarapida-postgres 4.63% 71.12MiB / 1GiB
+16:52:29
+recetarapida-gateway 11.01% 315.9MiB / 768MiB
+recetarapida-auth 4.38% 373.4MiB / 768MiB
+recetarapida-prescription 30.98% 434.2MiB / 1GiB
+recetarapida-postgres 2.60% 71.05MiB / 1GiB
+16:52:36
+recetarapida-gateway 12.42% 320.8MiB / 768MiB
+recetarapida-auth 4.34% 372.7MiB / 768MiB
+recetarapida-prescription 7.10% 435.9MiB / 1GiB
+recetarapida-postgres 2.61% 71MiB / 1GiB
+16:52:43
+recetarapida-gateway 11.93% 321.7MiB / 768MiB
+recetarapida-auth 5.03% 372.3MiB / 768MiB
+recetarapida-prescription 7.69% 435.9MiB / 1GiB
+recetarapida-postgres 2.93% 70.59MiB / 1GiB
+16:52:50
+recetarapida-gateway 12.66% 322.8MiB / 768MiB
+recetarapida-auth 4.78% 375.1MiB / 768MiB
+recetarapida-prescription 6.74% 434.7MiB / 1GiB
+recetarapida-postgres 2.52% 71.14MiB / 1GiB
+16:52:57
+recetarapida-gateway 12.18% 323.2MiB / 768MiB
+recetarapida-auth 4.57% 375.1MiB / 768MiB
+recetarapida-prescription 7.07% 433.9MiB / 1GiB
+recetarapida-postgres 2.59% 70.68MiB / 1GiB
+16:53:04
+recetarapida-gateway 10.87% 322.8MiB / 768MiB
+recetarapida-auth 4.29% 374.7MiB / 768MiB
+recetarapida-prescription 7.19% 435.5MiB / 1GiB
+recetarapida-postgres 2.56% 71.18MiB / 1GiB
+16:53:11
+recetarapida-gateway 10.92% 322.9MiB / 768MiB
+recetarapida-auth 4.01% 375.2MiB / 768MiB
+recetarapida-prescription 8.60% 435.1MiB / 1GiB
+recetarapida-postgres 2.43% 70.97MiB / 1GiB
+16:53:18
+recetarapida-gateway 10.97% 322.9MiB / 768MiB
+recetarapida-auth 4.36% 374.8MiB / 768MiB
+recetarapida-prescription 6.37% 435.9MiB / 1GiB
+recetarapida-postgres 2.52% 70.56MiB / 1GiB
+16:53:25
+recetarapida-gateway 11.36% 322.5MiB / 768MiB
+recetarapida-auth 4.49% 373.6MiB / 768MiB
+recetarapida-prescription 8.42% 436.3MiB / 1GiB
+recetarapida-postgres 2.59% 70.91MiB / 1GiB
+16:53:32
+recetarapida-gateway 11.52% 323MiB / 768MiB
+recetarapida-auth 4.32% 374.4MiB / 768MiB
+recetarapida-prescription 10.47% 435.9MiB / 1GiB
+recetarapida-postgres 5.37% 70.89MiB / 1GiB
+16:53:39
+recetarapida-gateway 10.73% 322.7MiB / 768MiB
+recetarapida-auth 3.95% 373.9MiB / 768MiB
+recetarapida-prescription 7.58% 436MiB / 1GiB
+recetarapida-postgres 2.61% 70.87MiB / 1GiB
+16:53:46
+recetarapida-gateway 13.02% 323.6MiB / 768MiB
+recetarapida-auth 4.22% 374MiB / 768MiB
+recetarapida-prescription 6.36% 435.3MiB / 1GiB
+recetarapida-postgres 2.80% 70.41MiB / 1GiB
+16:53:53
+recetarapida-gateway 10.95% 323.4MiB / 768MiB
+recetarapida-auth 4.45% 374.8MiB / 768MiB
+recetarapida-prescription 14.52% 431.6MiB / 1GiB
+recetarapida-postgres 2.80% 70.34MiB / 1GiB
+16:54:00
+recetarapida-gateway 11.60% 323.7MiB / 768MiB
+recetarapida-auth 4.52% 376.3MiB / 768MiB
+recetarapida-prescription 11.22% 432.3MiB / 1GiB
+recetarapida-postgres 3.08% 71.29MiB / 1GiB
+16:54:07
+recetarapida-gateway 11.60% 318.3MiB / 768MiB
+recetarapida-auth 4.41% 375.8MiB / 768MiB
+recetarapida-prescription 7.40% 432.2MiB / 1GiB
+recetarapida-postgres 2.64% 70.29MiB / 1GiB
+16:54:14
+recetarapida-gateway 10.45% 317.6MiB / 768MiB
+recetarapida-auth 4.03% 374.3MiB / 768MiB
+recetarapida-prescription 6.82% 430.2MiB / 1GiB
+recetarapida-postgres 2.48% 70.52MiB / 1GiB
+16:54:21
+recetarapida-gateway 9.40% 318.3MiB / 768MiB
+recetarapida-auth 3.73% 376.3MiB / 768MiB
+recetarapida-prescription 5.21% 432.7MiB / 1GiB
+recetarapida-postgres 2.23% 71.04MiB / 1GiB
+16:54:28
+recetarapida-gateway 7.96% 321MiB / 768MiB
+recetarapida-auth 3.06% 376.5MiB / 768MiB
+recetarapida-prescription 4.89% 431.8MiB / 1GiB
+recetarapida-postgres 2.06% 70.09MiB / 1GiB
+16:54:35
+recetarapida-gateway 7.45% 320.7MiB / 768MiB
+recetarapida-auth 2.93% 375.8MiB / 768MiB
+recetarapida-prescription 4.63% 431.8MiB / 1GiB
+recetarapida-postgres 1.75% 70.01MiB / 1GiB
+16:54:42
+recetarapida-gateway 7.03% 320.4MiB / 768MiB
+recetarapida-auth 2.60% 376.5MiB / 768MiB
+recetarapida-prescription 4.37% 432.2MiB / 1GiB
+recetarapida-postgres 3.96% 70.46MiB / 1GiB
+16:54:49
+recetarapida-gateway 6.40% 321.3MiB / 768MiB
+recetarapida-auth 2.58% 375.8MiB / 768MiB
+recetarapida-prescription 3.36% 432MiB / 1GiB
+recetarapida-postgres 1.55% 70.08MiB / 1GiB
+16:54:56
+recetarapida-gateway 5.05% 321.3MiB / 768MiB
+recetarapida-auth 2.16% 376.1MiB / 768MiB
+recetarapida-prescription 12.19% 432MiB / 1GiB
+recetarapida-postgres 1.21% 69.59MiB / 1GiB
+16:55:03
+recetarapida-gateway 4.10% 319.7MiB / 768MiB
+recetarapida-auth 1.78% 373.9MiB / 768MiB
+recetarapida-prescription 2.13% 430MiB / 1GiB
+recetarapida-postgres 1.11% 69.04MiB / 1GiB
+16:55:10
+recetarapida-gateway 3.34% 320.7MiB / 768MiB
+recetarapida-auth 1.45% 374.6MiB / 768MiB
+recetarapida-prescription 2.24% 431MiB / 1GiB
+recetarapida-postgres 0.75% 67.5MiB / 1GiB
+16:55:17
+recetarapida-gateway 2.55% 321.3MiB / 768MiB
+recetarapida-auth 0.98% 375.3MiB / 768MiB
+recetarapida-prescription 2.43% 431.3MiB / 1GiB
+recetarapida-postgres 0.69% 67.49MiB / 1GiB
+16:55:24
+recetarapida-gateway 1.45% 321MiB / 768MiB
+recetarapida-auth 0.63% 374.6MiB / 768MiB
+recetarapida-prescription 1.65% 430.5MiB / 1GiB
+recetarapida-postgres 0.37% 69.56MiB / 1GiB
+16:55:32
+recetarapida-gateway 0.66% 320.5MiB / 768MiB
+recetarapida-auth 0.29% 374.1MiB / 768MiB
+recetarapida-prescription 0.31% 430.5MiB / 1GiB
+recetarapida-postgres 0.53% 68.34MiB / 1GiB
+16:55:39
+recetarapida-gateway 0.04% 319.4MiB / 768MiB
+recetarapida-auth 0.03% 373.6MiB / 768MiB
+recetarapida-prescription 0.02% 429.5MiB / 1GiB
+recetarapida-postgres 0.00% 67.4MiB / 1GiB
