@@ -1,13 +1,17 @@
-# RecetaRápida API · Despliegue
+# RecetaRápida · Despliegue
 
-Despliegue de producción de RecetaRápida API en contenedores. Reúne en un solo
-`docker-compose.yml` el gateway, el servicio de autenticación, el servicio de
-prescripciones y PostgreSQL, y los publica en `https://recetarapida.ansayan.com`.
+Despliegue de producción de RecetaRápida (API + web) en contenedores. Reúne en un
+solo `docker-compose.yml` el front web, el gateway, el servicio de autenticación,
+el servicio de prescripciones y PostgreSQL, y los publica en
+`https://recetarapida.ansayan.com`.
 
 ## Arquitectura de despliegue
 
 ```text
-Internet ──► Cloudflare (TLS) ──► túnel ──► Traefik ──► gateway :8080
+Internet ──► Cloudflare (TLS) ──► túnel ──► Traefik ──► front :80 (nginx)
+                                                          │  sirve la SPA y proxya /api/
+                                                          ▼
+                                                     gateway :8080
                                                           │  red interna recetarapida_internal
                                           ┌───────────────┴────────────────┐
                                           ▼                                ▼
@@ -17,8 +21,10 @@ Internet ──► Cloudflare (TLS) ──► túnel ──► Traefik ──►
                                                   usuarios_db · prescriptions_db
 ```
 
-- Solo el gateway está conectado a la red `coolify` de Traefik. Los demás
-  contenedores no publican puertos.
+- Solo el **front** está conectado a la red `coolify` de Traefik. nginx sirve la
+  SPA y hace de reverse-proxy de `/api/` hacia el gateway, de modo que la web y
+  la API comparten origen (sin CORS). El gateway y los demás contenedores no
+  publican puertos.
 - PostgreSQL 16 aloja dos bases, `usuarios_db` y `prescriptions_db`. Cada una
   tiene su propio rol propietario (`usuarios_app`, `prescriptions_app`); ningún
   servicio usa el superusuario. El script que las crea es
@@ -31,7 +37,7 @@ Internet ──► Cloudflare (TLS) ──► túnel ──► Traefik ──►
 | Desarrollo (`gtw-quick-prescription`) | Producción (este repo) |
 |---|---|
 | `build.context: ../msa-...` (carpetas hermanas) | Contexto por URL de Git, con `REF_*` para fijar rama o commit |
-| Puertos 5432, 8080, 8081 y 8082 en el host | Ninguno publicado; el gateway entra por Traefik |
+| Puertos 5432, 8080, 8081 y 8082 en el host | Ninguno publicado; la app entra por Traefik vía el front |
 | Contraseñas y secreto JWT con valores por defecto | `.env` obligatorio, sin valores por defecto y con secretos aleatorios |
 | Un solo usuario `postgres` para todo | Un rol por base de datos |
 | Sin reinicio automático ni límites | `restart: unless-stopped` y `mem_limit` por servicio |
@@ -53,7 +59,7 @@ scripts/deploy.sh
 El script copia los archivos a `~/stacks/recetarapida`, crea `.env` con secretos
 aleatorios si no existe (permisos 600) y ejecuta `docker compose up -d --build`.
 Se puede repetir sin perder datos. Para desplegar un commit concreto, edita
-`REF_AUTH`, `REF_PRESCRIPTION` o `REF_GATEWAY` en el `.env` del servidor.
+`REF_AUTH`, `REF_PRESCRIPTION`, `REF_GATEWAY` o `REF_FRONT` en el `.env` del servidor.
 
 ## Verificar
 
@@ -75,12 +81,12 @@ docker compose exec -T postgres psql -U postgres -d usuarios_db \
 ## Pipeline de CI
 
 `.github/workflows/ci.yml` corre en cada push a `main`, en cada pull request y a
-mano. Revisa los scripts con ShellCheck, valida el compose, construye las tres
+mano. Revisa los scripts con ShellCheck, valida el compose, construye las cuatro
 imágenes desde los repositorios del equipo, levanta el stack completo con su
-propia instancia de PostgreSQL, espera a que los servicios respondan y ejecuta
-`scripts/smoke-test.sh` contra el gateway. Si algo falla, muestra los registros
+propia instancia de PostgreSQL, espera a que la app responda a través del front y
+ejecuta `scripts/smoke-test.sh` contra él. Si algo falla, muestra los registros
 de los contenedores; al final siempre apaga el stack. `ci/docker-compose.ci.yml`
-solo añade la publicación del puerto 8080 en el runner.
+solo añade la publicación del puerto 80 del front (en el 8080 del runner).
 
 El despliegue al servidor sigue siendo manual (`scripts/deploy.sh`) y se lanza
 cuando el pipeline pasa.
@@ -91,8 +97,10 @@ cuando el pipeline pasa.
 ssh homelab
 cd ~/stacks/recetarapida
 docker compose ps
-docker compose logs -f gateway
+docker compose logs -f front                          # nginx del front (acceso público)
+docker compose logs -f gateway                        # gateway interno
 docker compose up -d --build msa-quick-prescription   # reconstruir un servicio
+docker compose up -d --build front                    # reconstruir solo el front
 docker compose exec postgres psql -U postgres -c '\l' # listar bases
 ```
 

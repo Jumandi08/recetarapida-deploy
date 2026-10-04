@@ -34,6 +34,7 @@ if [ ! -f .env ]; then
     echo "REF_AUTH=main"
     echo "REF_PRESCRIPTION=main"
     echo "REF_GATEWAY=main"
+    echo "REF_FRONT=main"
   } > .env
   echo ".env creado (permisos 600)"
 fi

@@ -1,8 +1,9 @@
 name: CI
 
 # Verifica de punta a punta la definición del despliegue: valida el compose,
-# construye las tres imágenes desde los repositorios del equipo, levanta el
-# stack completo (Postgres incluido) y corre la prueba de humo contra el gateway.
+# construye las cuatro imágenes desde los repositorios del equipo, levanta el
+# stack completo (Postgres incluido) y corre la prueba de humo a través del
+# front (que proxya /api/ al gateway, como en producción).
 # El despliegue en el homelab se ejecuta con scripts/deploy.sh.
 
 on:
@@ -42,14 +43,14 @@ jobs:
       - name: Construir y levantar
         run: docker compose -f docker-compose.yml -f ci/docker-compose.ci.yml up -d --build
 
-      - name: Esperar al gateway
+      - name: Esperar al front y al gateway
         run: |
           for i in $(seq 1 60); do
             code=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/api/v1/cie10 || true)
             [ "$code" = "401" ] && exit 0
             sleep 3
           done
-          echo "El gateway no respondió 401 a tiempo (último código: $code)"; exit 1
+          echo "La app no respondió 401 a través del front a tiempo (último código: $code)"; exit 1
 
       - name: Prueba de humo
         run: scripts/smoke-test.sh http://localhost:8080

@@ -1,8 +1,9 @@
 name: recetarapida
 
-# Despliegue de producción de RecetaRápida API.
-# Solo el gateway sale a internet (por Traefik); la base de datos y los
-# microservicios viven en una red interna sin puertos publicados.
+# Despliegue de producción de RecetaRápida (API + web).
+# Solo el front sale a internet (por Traefik); el gateway, los microservicios y
+# la base de datos viven en una red interna sin puertos publicados. El front
+# sirve la SPA y hace de reverse-proxy de /api/ hacia el gateway (mismo origen).
 # Las imágenes se construyen desde los repositorios del equipo; REF_* fija
 # la rama o el commit de cada uno para poder repetir un despliegue.
 
@@ -79,22 +80,42 @@ services:
     environment:
       PRESCRIPTIONS_SERVICE_URI: http://msa-quick-prescription:8081
       AUTH_SERVICE_URI: http://msa-authentication:8082
+      # El front comparte origen con la API (nginx proxya /api); el navegador nunca
+      # hace peticiones cross-origin, así que SHELL_ORIGIN apunta al dominio público.
       SHELL_ORIGIN: https://${PUBLIC_HOST:-recetarapida.ansayan.com}
       JAVA_TOOL_OPTIONS: -XX:MaxRAMPercentage=75
     depends_on:
       - msa-authentication
       - msa-quick-prescription
     mem_limit: 768m
+    # El gateway deja de ser público: solo lo alcanza el front por la red interna.
+    networks:
+      - internal
+
+  front:
+    build:
+      context: ${REPO_FRONT:-https://github.com/JhonMichael-Dev/recetaRapida-front.git}#${REF_FRONT:-main}
+    image: recetarapida/front:${REF_FRONT:-main}
+    container_name: recetarapida-front
+    restart: unless-stopped
+    environment:
+      # URL del gateway tal como la ve el contenedor del front (sin barra ni path).
+      # nginx reenvía /api/ a este destino; la SPA usa rutas relativas (sin CORS).
+      GATEWAY_URL: http://gateway:8080
+    depends_on:
+      - gateway
+    mem_limit: 128m
     networks:
       - internal
       - coolify
     labels:
       # Traefik de Coolify: Cloudflare termina el TLS y entrega HTTP por el túnel.
+      # El front es la cara pública; sirve la SPA y proxya /api/ al gateway interno.
       traefik.enable: "true"
       traefik.docker.network: coolify
       traefik.http.routers.recetarapida.entrypoints: http
       traefik.http.routers.recetarapida.rule: Host(`${PUBLIC_HOST:-recetarapida.ansayan.com}`)
-      traefik.http.services.recetarapida.loadbalancer.server.port: "8080"
+      traefik.http.services.recetarapida.loadbalancer.server.port: "80"
 
 volumes:
   recetarapida_pgdata:
